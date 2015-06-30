@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_item_post"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding5"
+        android:paddingLeft="@dimen/padding5"
+        android:paddingRight="@dimen/padding5">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin3">
+
+            <TextView
+                android:id="@+id/item_post_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/item_post_img"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+                android:textColor="#ff000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/item_post_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_post_title"
+                android:layout_toLeftOf="@+id/item_post_img"
+                android:ellipsize="end"
+                android:lineSpacingExtra="1dp"
+                android:lines="2"
+                android:textColor="#ff707070"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_below="@id/item_post_description"
+                android:layout_marginTop="4dp"
+                android:layout_toLeftOf="@id/item_post_img"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_post_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff9d9d9d"
+                    android:layout_marginRight="@dimen/margin3"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/item_post_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff9d9d9d"
+                    android:textSize="10sp" />
+
+
+            </LinearLayout>
+
+            <com.loopj.android.image.SmartImageView
+                android:id="@id/item_post_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#ffeeeeee"
+                android:scaleType="fitXY" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
