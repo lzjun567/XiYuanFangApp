@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">ImportNew</string>
-
-    <string name="about">关于</string>
-    <string name="title_activity_content">ContentActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-</resources>
