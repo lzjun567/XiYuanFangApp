@@ -44,6 +44,7 @@ public class WebViewActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", -1);
         String url = Uri.parse(Config.SERVER_URL).buildUpon().appendPath("item").appendPath(id + "").toString();
@@ -52,8 +53,14 @@ public class WebViewActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     final Post post = parse(response);
-                    String text = "<center><h3>" + post.getTitle() + "</h3></center>" + post.getContent();
-                    mWebView.loadDataWithBaseURL(null, text, "text/html", "utf-8", null);
+                    StringBuilder builder = new StringBuilder("<html>");
+                    builder.append("<head>");
+                    builder.append("<link rel=stylesheet href='css/style.css'>");
+                    builder.append("</head>");
+                    builder.append(post.getContent());
+                    builder.append("</html>");
+                    Log.i(TAG, builder.toString());
+                    mWebView.loadDataWithBaseURL("file:///android_asset/", builder.toString(), "text/html", "UTF-8", "");
                 } catch (JSONException e) {
                     Log.e("WebViewActivity", e.toString());
                 }
