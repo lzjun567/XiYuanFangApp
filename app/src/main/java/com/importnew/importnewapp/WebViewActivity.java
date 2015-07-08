@@ -47,7 +47,7 @@ public class WebViewActivity extends AppCompatActivity {
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", -1);
-        String url = Uri.parse(Config.SERVER_URL).buildUpon().appendPath("item").appendPath(id + "").toString();
+        String url = Uri.parse(Config.SERVER_URL).buildUpon().appendPath("items").appendPath(id + "").toString();
         JsonObjectRequest request = new JsonObjectRequest(url.toString(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -59,7 +59,6 @@ public class WebViewActivity extends AppCompatActivity {
                     builder.append("</head>");
                     builder.append(post.getContent());
                     builder.append("</html>");
-                    Log.i(TAG, builder.toString());
                     mWebView.loadDataWithBaseURL("file:///android_asset/", builder.toString(), "text/html", "UTF-8", "");
                 } catch (JSONException e) {
                     Log.e("WebViewActivity", e.toString());
