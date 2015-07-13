@@ -70,7 +70,7 @@
 
             </LinearLayout>
 
-            <com.loopj.android.image.SmartImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@id/item_post_img"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
