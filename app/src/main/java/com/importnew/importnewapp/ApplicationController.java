@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 /**
  * Created by lzjun on 6/20/15.
@@ -22,6 +23,7 @@ public class ApplicationController extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        Fresco.initialize(this);
     }
 
     public static synchronized ApplicationController getInstance() {
