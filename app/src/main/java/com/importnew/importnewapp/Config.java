@@ -5,5 +5,6 @@ package com.importnew.importnewapp;
  */
 public class Config {
 
-    public static final String SERVER_URL = "http://api.foofish.net";
+    private static final String SERVER_URL = "http://api.foofish.net";
+    public static final String ITEMS_URL = SERVER_URL + "/items";
 }

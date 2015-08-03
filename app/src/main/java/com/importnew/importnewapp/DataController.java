@@ -1,14 +1,11 @@
 package com.importnew.importnewapp;
 
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.importnew.importnewapp.models.Post;
 
@@ -27,21 +24,19 @@ public class DataController {
     private List<Post> repository = new ArrayList<>();
     private List<UIRespondent> mUIRespondents;
 
-    private enum Action {INITAL, LOADMORE, REFRESH}
+    private enum Action {INITIAL, LOADMORE, REFRESH}
 
 
     public DataController() {
     }
 
     public final void initial() {
-        String url = Uri.parse(Config.SERVER_URL).buildUpon().appendPath("items").toString();
-        fetch(url, Action.INITAL);
+        fetch(Config.ITEMS_URL, Action.INITIAL);
 
     }
 
     public final void loadMore(int currentPage) {
-        String queryString = (currentPage - 1) * 20 + "";
-        String url = Uri.parse(Config.SERVER_URL).buildUpon().appendPath("items").appendQueryParameter("l", queryString).toString();
+        String url = Config.ITEMS_URL+"?l="+ ((currentPage - 1) * 20);
         fetch(url, Action.LOADMORE);
     }
 
@@ -49,16 +44,15 @@ public class DataController {
         if (!repository.isEmpty()) {
             Post firstPost = repository.get(0);
             if (firstPost != null) {
-                String url = Uri.parse(Config.SERVER_URL).buildUpon().appendPath("items").appendQueryParameter("f_id", firstPost.getId() + "").toString();
+                String url = Config.ITEMS_URL+"?f_id="+firstPost.getId();
                 fetch(url, Action.REFRESH);
             }
         }
     }
 
-
-
     public final void fetch(String url, final Action action) {
-        JsonObjectRequest request = new JsonObjectRequest(url.toString(), null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(url.toString(), null,
+                new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -68,7 +62,7 @@ public class DataController {
                             List<Post> data = (List) msg.obj;
                             for (UIRespondent ui : mUIRespondents) {
                                 switch (action){
-                                    case INITAL:
+                                    case INITIAL:
                                         ui.onInitializeDone(data);
                                         break;
                                     case LOADMORE:
@@ -83,7 +77,6 @@ public class DataController {
                     };
                     Message msg = Message.obtain(handler);
                     msg.obj = parse(response);
-                    ;
                     msg.sendToTarget();
 
                 } catch (JSONException e) {
