@@ -14,7 +14,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
  */
 public class ApplicationController extends Application {
 
-    public static final String TAG = "VolleyPatterns";
+    public static final String TAG = "ApplicationController";
     private RequestQueue mRequestQueue;
 
     private static ApplicationController sInstance;

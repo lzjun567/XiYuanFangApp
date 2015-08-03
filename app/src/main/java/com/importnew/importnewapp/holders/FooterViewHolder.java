@@ -16,12 +16,12 @@ public class FooterViewHolder extends RecyclerView.ViewHolder {
     public FooterViewHolder(View itemView) {
         super(itemView);
         mProgressBar = (ContentLoadingProgressBar)itemView.findViewById(R.id.loading_more_progress);
-        mTextView = (TextView)itemView.findViewById(R.id.loading_more_error_tips);
+        mTextView = (TextView)itemView.findViewById(R.id.loading_more_tips);
     }
 
     public void onBindViewHolder() {
-        mTextView.setText("嘿嘿，没有内容可加载了");
-        mTextView.setVisibility(View.VISIBLE);
-        mProgressBar.hide();
+//        mTextView.setText("嘿嘿，没有内容可加载了");
+//        mTextView.setVisibility(View.VISIBLE);
+//        mProgressBar.hide();
     }
 }

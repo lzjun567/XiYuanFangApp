@@ -34,7 +34,7 @@ public class PostListFragment extends Fragment implements UIRespondent, SwipeRef
         mRecyclerView = (RecyclerView) view.findViewById(R.id.post_list_recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(linearLayoutManager) {
+        mRecyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
                 dataController.loadMore(currentPage);

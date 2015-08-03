@@ -45,7 +45,7 @@ public abstract class ContentAdapterBase<T> extends RecyclerView.Adapter<Recycle
 
     protected abstract RecyclerView.ViewHolder onCreateCustomContentHolder(ViewGroup parent, int viewType);
 
-    protected abstract void onBindCustomViewHolder(RecyclerView.ViewHolder hodler, int position);
+    protected abstract void onBindCustomViewHolder(RecyclerView.ViewHolder holder, int position);
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

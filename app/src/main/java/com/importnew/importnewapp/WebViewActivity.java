@@ -48,7 +48,7 @@ public class WebViewActivity extends AppCompatActivity {
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", -1);
-        String url = Uri.parse(Config.SERVER_URL).buildUpon().appendPath("items").appendPath(id + "").toString();
+        String url = Config.ITEMS_URL+"/"+ id;
         JsonObjectRequest request = new JsonObjectRequest(url.toString(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
