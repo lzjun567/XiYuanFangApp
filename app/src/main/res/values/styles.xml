@@ -1,11 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.MD">
         <!-- Customize your theme here. -->
     <!--<style name="AppTheme" parent="AppTheme.Base"/>-->
     <!--<style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">-->
 
+    </style>
+
+    <style name="Base.Theme.MD" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1E88E5</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="android:navigationBarColor">#2196F3</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
 </resources>
