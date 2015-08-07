@@ -1,7 +1,7 @@
 package com.importnew.importnewapp;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +43,7 @@ public class PostListFragment extends Fragment implements UIRespondent, SwipeRef
             ;
         });
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_post_list);
+        mSwipeRefreshLayout.setColorScheme(android.R.color.holo_blue_dark, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_green_light);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mLoadingBar = (ContentLoadingProgressBar) view.findViewById(R.id.loading_bar);
         rootView = (ViewGroup) view;
