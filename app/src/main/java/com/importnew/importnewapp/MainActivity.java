@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -22,6 +23,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     private DrawerLayout mDrawerLayout;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -30,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //getFragmentManager().beginTransaction().replace(R.id.post_list_fragment, new PostListFragment()).commit();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -92,15 +94,15 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         List<String> titles = new ArrayList<>();
         titles.add("Java");
-        titles.add("Android");
-        titles.add("Web");
+//        titles.add("Android");
+//        titles.add("Web");
         mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
+//        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
+//        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new PostListFragment());
-        fragments.add(new PostListFragment());
-        fragments.add(new PostListFragment());
+//        fragments.add(new PostListFragment());
+//        fragments.add(new PostListFragment());
         FragmentAdapter adapter =
                 new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
         mViewPager.setAdapter(adapter);
@@ -115,6 +117,18 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
+                        Log.i(TAG, "" + menuItem.getItemId());
+                        Log.i(TAG, menuItem.getTitle().toString());
+                        switch (menuItem.getItemId()){
+                        /*    case R.id.nav_home:
+                                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                                startActivity(intent);
+                                return true;*/
+                            case R.id.nav_about:
+                                Intent intent2 = new Intent(MainActivity.this, AboutActivity.class);
+                                startActivity(intent2);
+                                return true;
+                        }
                         return true;
                     }
                 });

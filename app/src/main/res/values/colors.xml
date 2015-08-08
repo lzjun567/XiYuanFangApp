@@ -2,4 +2,10 @@
 <resources>
     <color name="sn_common_bg_new">#fff9f8ef</color>
     <color name="window_background">#FFF5F5F5</color>
+
+    <color name="material_blue_300">#ff7baaf7</color>
+    <color name="material_blue_500">#ff4285f4</color>
+    <color name="material_blue_700">#ff3367d6</color>
+    <color name="material_red_A200">#FF4081</color>
+    <color name="state_menu_item_selected">#44009688</color>
 </resources>
