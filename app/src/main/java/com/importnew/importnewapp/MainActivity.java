@@ -50,23 +50,6 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager();
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Snackbar comes out", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                Toast.makeText(
-//                                        MainActivity.this,
-//                                        "Toast comes out",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
-//                        }).show();
-//            }
-//        });
-
     }
 
     @Override
@@ -94,15 +77,15 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         List<String> titles = new ArrayList<>();
         titles.add("Java");
-//        titles.add("Android");
-//        titles.add("Web");
+        titles.add("Python");
+        titles.add("更多");
         mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
-//        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
-//        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
+        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
+        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new PostListFragment());
-//        fragments.add(new PostListFragment());
-//        fragments.add(new PostListFragment());
+        fragments.add(new PostListFragment());
+        fragments.add(new PostListFragment());
         FragmentAdapter adapter =
                 new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
         mViewPager.setAdapter(adapter);
