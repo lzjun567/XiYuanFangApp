@@ -22,9 +22,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 ####Download
 
-App下载地址：[importnew.apk](http://7i7hhc.com1.z0.glb.clouddn.com/importnewapp-release_1.0.2.apk)
+App下载地址：[importnew.apk](http://7i7hhc.com1.z0.glb.clouddn.com/xiyuanfang-release_1.1.0.apk)
 
-![download](http://qrapi.cli.im/qr?data=http%253A%252F%252F7i7hhc.com1.z0.glb.clouddn.com%252Fimportnewapp-release_1.0.2.apk&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=68700be95b434d93d6ac585a306bfde0)
 
 
 
