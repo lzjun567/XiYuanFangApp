@@ -5,9 +5,14 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_messages"
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="首页"/>
+
+        <item
+            android:id="@+id/nav_about"
             android:icon="@drawable/ic_event"
-            android:title="收藏"/>
+            android:title="关于"/>
     </group>
 
 

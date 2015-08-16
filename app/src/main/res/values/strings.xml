@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">ImportNew</string>
-
-    <string name="about">关于</string>
-    <string name="title_activity_content">ContentActivity</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">西源坊</string>
+    <string name="about">关 于</string>
     <string name="action_settings">Settings</string>
     <string name="load_more_tips_txt">正在加载更多</string>
+    <string name="user_name">西源</string>
+    <string name="user_description">life is short. tomorrow is not promised</string>
 </resources>

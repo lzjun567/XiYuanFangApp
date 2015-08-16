@@ -11,16 +11,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.importnew.importnewapp.adapters.FragmentAdapter;
+import com.importnew.importnewapp.adapters.TabFragmentPagerAdapter;
+import com.importnew.importnewapp.fragment.PostListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     private DrawerLayout mDrawerLayout;
     private ViewPager mViewPager;
@@ -30,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //getFragmentManager().beginTransaction().replace(R.id.post_list_fragment, new PostListFragment()).commit();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -47,23 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager();
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Snackbar comes out", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                Toast.makeText(
-//                                        MainActivity.this,
-//                                        "Toast comes out",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
-//                        }).show();
-//            }
-//        });
 
     }
 
@@ -90,22 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager() {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        List<String> titles = new ArrayList<>();
-        titles.add("Java");
-        titles.add("Android");
-        titles.add("Web");
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new PostListFragment());
-        fragments.add(new PostListFragment());
-        fragments.add(new PostListFragment());
-        FragmentAdapter adapter =
-                new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
+
+        TabFragmentPagerAdapter adapter = new TabFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabsFromPagerAdapter(adapter);
+
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -115,6 +91,18 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
+                        Log.i(TAG, "" + menuItem.getItemId());
+                        Log.i(TAG, menuItem.getTitle().toString());
+                        switch (menuItem.getItemId()) {
+                        /*    case R.id.nav_home:
+                                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                                startActivity(intent);
+                                return true;*/
+                            case R.id.nav_about:
+                                Intent intent2 = new Intent(MainActivity.this, AboutActivity.class);
+                                startActivity(intent2);
+                                return true;
+                        }
                         return true;
                     }
                 });

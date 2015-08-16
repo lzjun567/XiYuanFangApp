@@ -9,10 +9,10 @@
     </style>
 
     <style name="Base.Theme.MD" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryDark">#1E88E5</item>
-        <item name="colorAccent">#FF4081</item>
-        <item name="android:navigationBarColor">#2196F3</item>
+        <item name="colorPrimary">@color/material_blue_500</item>
+        <item name="colorPrimaryDark">@color/material_blue_500</item>
+        <item name="colorAccent">@color/material_blue_A400</item>
+        <item name="android:navigationBarColor">@color/material_blue_500</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
