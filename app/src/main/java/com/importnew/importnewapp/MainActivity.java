@@ -15,7 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.importnew.importnewapp.adapters.FragmentAdapter;
+import com.importnew.importnewapp.adapters.TabFragmentPagerAdapter;
+import com.importnew.importnewapp.fragment.PostListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,22 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager() {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        List<String> titles = new ArrayList<>();
-        titles.add("Java");
-        titles.add("Python");
-        titles.add("更多");
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new PostListFragment());
-        fragments.add(new PostListFragment());
-        fragments.add(new PostListFragment());
-        FragmentAdapter adapter =
-                new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
+
+        TabFragmentPagerAdapter adapter = new TabFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabsFromPagerAdapter(adapter);
+
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -102,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         mDrawerLayout.closeDrawers();
                         Log.i(TAG, "" + menuItem.getItemId());
                         Log.i(TAG, menuItem.getTitle().toString());
-                        switch (menuItem.getItemId()){
+                        switch (menuItem.getItemId()) {
                         /*    case R.id.nav_home:
                                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                                 startActivity(intent);

@@ -26,17 +26,36 @@ public class DataController {
 
     private enum Action {INITIAL, LOADMORE, REFRESH}
 
+    private String url;
+
 
     public DataController() {
+        this.url = Config.ITEMS_URL;
+    }
+
+    public DataController(String category) {
+        switch (category) {
+            case "python":
+                this.url = Config.PythonURL;
+                break;
+            case "java":
+                this.url = Config.JavaURL;
+                break;
+            case "other":
+                this.url = Config.OtherURL;
+                break;
+            default:
+                this.url = Config.ITEMS_URL;
+        }
     }
 
     public final void initial() {
-        fetch(Config.ITEMS_URL, Action.INITIAL);
+        fetch(this.url,  Action.INITIAL);
 
     }
 
     public final void loadMore(int currentPage) {
-        String url = Config.ITEMS_URL+"?l="+ ((currentPage - 1) * 20);
+        String url = this.url + "?l=" + ((currentPage - 1) * 20);
         fetch(url, Action.LOADMORE);
     }
 
@@ -44,7 +63,7 @@ public class DataController {
         if (!repository.isEmpty()) {
             Post firstPost = repository.get(0);
             if (firstPost != null) {
-                String url = Config.ITEMS_URL+"?f_id="+firstPost.getId();
+                String url = this.url+ "?f_id=" + firstPost.getId();
                 fetch(url, Action.REFRESH);
             }
         }
@@ -53,37 +72,37 @@ public class DataController {
     public final void fetch(String url, final Action action) {
         JsonObjectRequest request = new JsonObjectRequest(url.toString(), null,
                 new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    Handler handler = new Handler(Looper.getMainLooper()) {
-                        @Override
-                        public void handleMessage(Message msg) {
-                            List<Post> data = (List) msg.obj;
-                            for (UIRespondent ui : mUIRespondents) {
-                                switch (action){
-                                    case INITIAL:
-                                        ui.onInitializeDone(data);
-                                        break;
-                                    case LOADMORE:
-                                        ui.onLoadMoreDone(data);
-                                        break;
-                                    case REFRESH:
-                                        ui.onRefreshDone(data);
-                                        break;
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Handler handler = new Handler(Looper.getMainLooper()) {
+                                @Override
+                                public void handleMessage(Message msg) {
+                                    List<Post> data = (List) msg.obj;
+                                    for (UIRespondent ui : mUIRespondents) {
+                                        switch (action) {
+                                            case INITIAL:
+                                                ui.onInitializeDone(data);
+                                                break;
+                                            case LOADMORE:
+                                                ui.onLoadMoreDone(data);
+                                                break;
+                                            case REFRESH:
+                                                ui.onRefreshDone(data);
+                                                break;
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    };
-                    Message msg = Message.obtain(handler);
-                    msg.obj = parse(response);
-                    msg.sendToTarget();
+                            };
+                            Message msg = Message.obtain(handler);
+                            msg.obj = parse(response);
+                            msg.sendToTarget();
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();

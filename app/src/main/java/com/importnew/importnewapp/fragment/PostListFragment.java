@@ -1,4 +1,4 @@
-package com.importnew.importnewapp;
+package com.importnew.importnewapp.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.importnew.importnewapp.DataController;
+import com.importnew.importnewapp.EndlessRecyclerOnScrollListener;
+import com.importnew.importnewapp.R;
+import com.importnew.importnewapp.UIRespondent;
 import com.importnew.importnewapp.adapters.PostListAdapter;
 import com.importnew.importnewapp.models.Post;
 
@@ -27,6 +31,22 @@ public class PostListFragment extends Fragment implements UIRespondent, SwipeRef
     protected PostListAdapter mAdapter;
     protected DataController dataController;
 
+    private String category;
+
+//    public PostListFragment(){
+//        super();
+//        Bundle args = new Bundle();
+//        args.putInt("index", 1);
+//        this.setArguments(args);
+//    }
+
+//    public PostListFragment(String category) {
+//        super();
+//        this.category = category;
+//        Bundle args = new Bundle();
+//        args.putInt("index", 1);
+//        this.setArguments(args);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +63,11 @@ public class PostListFragment extends Fragment implements UIRespondent, SwipeRef
             ;
         });
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_post_list);
-        mSwipeRefreshLayout.setColorScheme(android.R.color.holo_blue_dark, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_green_light);
+        mSwipeRefreshLayout.setColorSchemeResources(
+                android.R.color.holo_blue_dark,
+                android.R.color.holo_blue_light,
+                android.R.color.holo_green_light,
+                android.R.color.holo_green_light);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mLoadingBar = (ContentLoadingProgressBar) view.findViewById(R.id.loading_bar);
         rootView = (ViewGroup) view;
@@ -54,7 +78,15 @@ public class PostListFragment extends Fragment implements UIRespondent, SwipeRef
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        dataController = new DataController();
+        if (this.getClass() == PythonFragment.class) {
+            dataController = new DataController("python");
+        } else if (this.getClass() == JavaFragment.class) {
+            dataController = new DataController("java");
+        } else if (this.getClass() == OtherFragment.class) {
+            dataController = new DataController("other");
+        } else {
+            dataController = new DataController();
+        }
         dataController.addUIRespondent(this);
         mAdapter = new PostListAdapter(getActivity(), dataController);
         mRecyclerView.setAdapter(mAdapter);
