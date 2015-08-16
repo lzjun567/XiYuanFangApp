@@ -31,23 +31,6 @@ public class PostListFragment extends Fragment implements UIRespondent, SwipeRef
     protected PostListAdapter mAdapter;
     protected DataController dataController;
 
-    private String category;
-
-//    public PostListFragment(){
-//        super();
-//        Bundle args = new Bundle();
-//        args.putInt("index", 1);
-//        this.setArguments(args);
-//    }
-
-//    public PostListFragment(String category) {
-//        super();
-//        this.category = category;
-//        Bundle args = new Bundle();
-//        args.putInt("index", 1);
-//        this.setArguments(args);
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post_list, container, false);
@@ -78,19 +61,12 @@ public class PostListFragment extends Fragment implements UIRespondent, SwipeRef
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        if (this.getClass() == PythonFragment.class) {
-            dataController = new DataController("python");
-        } else if (this.getClass() == JavaFragment.class) {
-            dataController = new DataController("java");
-        } else if (this.getClass() == OtherFragment.class) {
-            dataController = new DataController("other");
-        } else {
+        if (dataController == null) {
             dataController = new DataController();
         }
         dataController.addUIRespondent(this);
         mAdapter = new PostListAdapter(getActivity(), dataController);
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
 
