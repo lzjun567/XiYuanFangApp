@@ -8,7 +8,7 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <com.importnew.importnewapp.view.CircleImageView
+    <net.foofish.xiyuanfang.view.CircleImageView
         android:id="@+id/imageViewUser"
         android:layout_width="100dp"
         android:layout_height="100dp"

@@ -1,12 +1,9 @@
-ImportNew Android Client
+西源坊
 ========================
-[importnew](http://www.importnew.com)是一个专注于 Java 技术分享的博客平台。
+西源坊是一个实验性项目，目前的主要包括Python、Java相关的一些技术文章，以供闲暇之余打发时间。西源坊使用Material Design设计风格。
 ####Screenshots
+![index](http://7lryy3.com1.z0.glb.clouddn.com/device-2015-08-22-002409.png)
 
-![home](http://7i7hhc.com1.z0.glb.clouddn.com/device-2015-07-09-092935.png)
-
-
-![detail](http://7i7hhc.com1.z0.glb.clouddn.com/device-2015-07-09-093001.png)
 
 ####Requirements
 
@@ -15,10 +12,9 @@ ImportNew Android Client
 - Android Support Library, revision 14 or newer
 - An Android device running Android 2.2 or newer
 
-####License
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+####项目中使用到的一些开源库
+- 图片处理：[fresco](https://github.com/facebook/fresco)
+- 网络处理：[volley](https://github.com/mcxiaoke/android-volley)
 
 ####Download
 
