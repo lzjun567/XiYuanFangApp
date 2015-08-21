@@ -2,7 +2,7 @@
 ========================
 西源坊是一个实验性项目，目前的主要包括Python、Java相关的一些技术文章，以供闲暇之余打发时间。西源坊使用Material Design设计风格。
 ####Screenshots
-![index](http://7lryy3.com1.z0.glb.clouddn.com/device-2015-08-22-002409.png)
+![index](screenshot/index.png)
 
 
 ####Requirements
