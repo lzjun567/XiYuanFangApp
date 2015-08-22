@@ -18,7 +18,7 @@
 
 ####Download
 
-App下载地址：[importnew.apk](http://7i7hhc.com1.z0.glb.clouddn.com/xiyuanfang-release_1.1.0.apk)
+App下载地址：[importnew.apk](http://7lryy3.com1.z0.glb.clouddn.com/xiyuanfang1.1.apk)
 
 
 

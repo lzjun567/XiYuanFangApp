@@ -7,6 +7,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+import com.avos.avoscloud.AVAnalytics;
+import com.avos.avoscloud.AVOSCloud;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 /**
@@ -24,6 +26,14 @@ public class ApplicationController extends Application {
         super.onCreate();
         sInstance = this;
         Fresco.initialize(this);
+
+        // 初始化应用信息
+        AVOSCloud.initialize(this, "s5AITtAME6JSaRSjg9DSIMCt",
+                "chUhD3QoW3RFfHGVOlwz9QJo");
+        // 启用崩溃错误统计
+        AVAnalytics.enableCrashReport(this.getApplicationContext(), true);
+        AVOSCloud.setLastModifyEnabled(true);
+        AVOSCloud.setDebugLogEnabled(true);
     }
 
     public static synchronized ApplicationController getInstance() {
